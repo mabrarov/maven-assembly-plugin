@@ -364,6 +364,32 @@
           </description>
         </field>
         <field>
+          <name>fileOwner</name>
+          <version>2.1.0+</version>
+          <association>
+            <type>OwnerInfo</type>
+          </association>
+          <description>
+            <![CDATA[
+            Sets the owner of the files included.
+            If not specified then is taken from file system.
+            ]]>
+          </description>
+        </field>
+        <field>
+          <name>directoryOwner</name>
+          <version>2.1.0+</version>
+          <association>
+            <type>OwnerInfo</type>
+          </association>
+          <description>
+            <![CDATA[
+            Sets the owner of the directories included.
+            If not specified then is taken from file system.
+            ]]>
+          </description>
+        </field>
+        <field>
           <name>directory</name>
           <version>1.0.0+</version>
           <type>String</type>
@@ -458,6 +484,19 @@
             Write = 2, and Execute = 1.  For example, the value 0644
             translates to User read-write, Group and Other read-only.  The default value is 0644
             <a href="http://www.onlamp.com/pub/a/bsd/2000/09/06/FreeBSD_Basics.html">(more on unix-style permissions)</a>
+            ]]>
+          </description>
+        </field>
+        <field>
+          <name>fileOwner</name>
+          <version>2.1.0+</version>
+          <association>
+            <type>OwnerInfo</type>
+          </association>
+          <description>
+            <![CDATA[
+            Sets the owner of the files included.
+            If not specified then is taken from file system.
             ]]>
           </description>
         </field>
@@ -582,6 +621,32 @@
             Read = 4, Write = 2, and Execute = 1.  For example, the value
             0755 translates to User read-write, Group and Other read-only. The default value is 0755.
             <a href="http://www.onlamp.com/pub/a/bsd/2000/09/06/FreeBSD_Basics.html">(more on unix-style permissions)</a>
+            ]]>
+          </description>
+        </field>
+        <field>
+          <name>fileOwner</name>
+          <version>2.1.0+</version>
+          <association>
+            <type>OwnerInfo</type>
+          </association>
+          <description>
+            <![CDATA[
+            Sets the owner of the files included.
+            If not specified then is taken from file system.
+            ]]>
+          </description>
+        </field>
+        <field>
+          <name>directoryOwner</name>
+          <version>2.1.0+</version>
+          <association>
+            <type>OwnerInfo</type>
+          </association>
+          <description>
+            <![CDATA[
+            Sets the owner of the directories included.
+            If not specified then is taken from file system.
             ]]>
           </description>
         </field>
@@ -889,6 +954,32 @@
           </description>
         </field>
         <field>
+          <name>fileOwner</name>
+          <version>2.1.0+</version>
+          <association>
+            <type>OwnerInfo</type>
+          </association>
+          <description>
+            <![CDATA[
+            Sets the owner of the files included.
+            If not specified then is taken from file system.
+            ]]>
+          </description>
+        </field>
+        <field>
+          <name>directoryOwner</name>
+          <version>2.1.0+</version>
+          <association>
+            <type>OwnerInfo</type>
+          </association>
+          <description>
+            <![CDATA[
+            Sets the owner of the directories included.
+            If not specified then is taken from file system.
+            ]]>
+          </description>
+        </field>
+        <field>
           <name>fileSets</name>
           <version>1.1.0+</version>
           <association>
@@ -1033,6 +1124,32 @@
             Read = 4, Write = 2, and Execute = 1.  For example, the value
             0755 translates to User read-write, Group and Other read-only. The default value is 0755.
             <a href="http://www.onlamp.com/pub/a/bsd/2000/09/06/FreeBSD_Basics.html">(more on unix-style permissions)</a>
+            ]]>
+          </description>
+        </field>
+        <field>
+          <name>fileOwner</name>
+          <version>2.1.0+</version>
+          <association>
+            <type>OwnerInfo</type>
+          </association>
+          <description>
+            <![CDATA[
+            Sets the owner of the files included.
+            If not specified then is taken from file system.
+            ]]>
+          </description>
+        </field>
+        <field>
+          <name>directoryOwner</name>
+          <version>2.1.0+</version>
+          <association>
+            <type>OwnerInfo</type>
+          </association>
+          <description>
+            <![CDATA[
+            Sets the owner of the directories included.
+            If not specified then is taken from file system.
             ]]>
           </description>
         </field>
@@ -1211,6 +1328,32 @@
             Read = 4, Write = 2, and Execute = 1.  For example, the value
             0755 translates to User read-write, Group and Other read-only. The default value is 0755.
             <a href="http://www.onlamp.com/pub/a/bsd/2000/09/06/FreeBSD_Basics.html">(more on unix-style permissions)</a>
+            ]]>
+          </description>
+        </field>
+        <field>
+          <name>fileOwner</name>
+          <version>2.1.0+</version>
+          <association>
+            <type>OwnerInfo</type>
+          </association>
+          <description>
+            <![CDATA[
+            Sets the owner of the files included.
+            If not specified then is taken from file system.
+            ]]>
+          </description>
+        </field>
+        <field>
+          <name>directoryOwner</name>
+          <version>2.1.0+</version>
+          <association>
+            <type>OwnerInfo</type>
+          </association>
+          <description>
+            <![CDATA[
+            Sets the owner of the directories included.
+            If not specified then is taken from file system.
             ]]>
           </description>
         </field>
@@ -1407,6 +1550,77 @@
             Configuration options for the handler.
           </description>
           <type>DOM</type>
+        </field>
+      </fields>
+    </class>
+    <class>
+      <name>OwnerEntity</name>
+      <version>2.1.0+</version>
+      <description>
+        Describes UNIX user or group owning file or directory.
+      </description>
+      <fields>
+        <field>
+          <name>name</name>
+          <version>2.1.0+</version>
+          <description>
+            <![CDATA[
+            Name of entity. Similar to a UNIX user name or group name.
+            If not specified then is taken from file system.
+            ]]>
+          </description>
+          <type>String</type>
+          <required>false</required>
+        </field>
+        <field>
+          <name>id</name>
+          <version>2.1.0+</version>
+          <description>
+            <![CDATA[
+            ID of entity. Similar to a UNIX UID and GID.
+            Format: integer number.
+            If not specified then is taken from file system.
+            ]]>
+          </description>
+          <type>String</type>
+          <required>false</required>
+        </field>
+      </fields>
+    </class>
+    <class>
+      <name>OwnerInfo</name>
+      <version>2.1.0+</version>
+      <description>
+        Describes owner of file or directory.
+      </description>
+      <fields>
+        <field>
+          <name>user</name>
+          <version>2.1.0+</version>
+          <description>
+            <![CDATA[
+            User owning file or directory.
+            If not specified then is taken from file system.
+            ]]>
+          </description>
+          <association>
+            <type>OwnerEntity</type>
+          </association>
+          <required>false</required>
+        </field>
+        <field>
+          <name>group</name>
+          <version>2.1.0+</version>
+          <description>
+            <![CDATA[
+            Group owning file or directory.
+            If not specified then is taken from file system.
+            ]]>
+          </description>
+          <association>
+            <type>OwnerEntity</type>
+          </association>
+          <required>false</required>
         </field>
       </fields>
     </class>

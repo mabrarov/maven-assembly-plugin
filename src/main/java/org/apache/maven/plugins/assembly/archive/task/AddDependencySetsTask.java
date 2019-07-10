@@ -50,6 +50,7 @@ import org.apache.maven.shared.artifact.filter.resolve.ScopeFilter;
 import org.apache.maven.shared.artifact.filter.resolve.transform.ArtifactIncludeFilterTransformer;
 import org.codehaus.plexus.archiver.Archiver;
 import org.codehaus.plexus.archiver.ArchiverException;
+import org.codehaus.plexus.archiver.Owner;
 import org.codehaus.plexus.components.io.functions.InputStreamTransformer;
 import org.codehaus.plexus.interpolation.fixed.FixedStringSearchInterpolator;
 import org.codehaus.plexus.logging.Logger;
@@ -249,6 +250,18 @@ public class AddDependencySetsTask
         if ( fileMode != -1 )
         {
             task.setFileMode( fileMode );
+        }
+
+        final Owner directoryOwner = TypeConversionUtils.ownerInfoToOwner( dependencySet.getDirectoryOwner(), logger );
+        if ( directoryOwner != null )
+        {
+            task.setDirectoryOwner( directoryOwner );
+        }
+
+        final Owner fileOwner = TypeConversionUtils.ownerInfoToOwner( dependencySet.getFileOwner(), logger );
+        if ( fileOwner != null )
+        {
+            task.setFileOwner( fileOwner );
         }
 
         task.setUnpack( dependencySet.isUnpack() );

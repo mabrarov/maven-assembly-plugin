@@ -28,6 +28,7 @@ import org.apache.maven.plugins.assembly.utils.TypeConversionUtils;
 import org.apache.maven.project.MavenProject;
 import org.codehaus.plexus.archiver.Archiver;
 import org.codehaus.plexus.archiver.ArchiverException;
+import org.codehaus.plexus.archiver.Owner;
 import org.codehaus.plexus.archiver.util.DefaultArchivedFileSet;
 import org.codehaus.plexus.archiver.util.DefaultFileSet;
 import org.codehaus.plexus.components.io.functions.InputStreamTransformer;
@@ -59,6 +60,10 @@ public class AddArtifactTask
     private int directoryMode = -1;
 
     private int fileMode = -1;
+
+    private Owner directoryOwner;
+
+    private Owner fileOwner;
 
     private boolean unpack = false;
 
@@ -106,8 +111,14 @@ public class AddArtifactTask
         boolean fileModeSet = false;
         boolean dirModeSet = false;
 
+        boolean fileOwnerSet = false;
+        boolean dirOwnerSet = false;
+
         final int oldDirMode = archiver.getOverrideDirectoryMode();
         final int oldFileMode = archiver.getOverrideFileMode();
+
+        final Owner oldDirOwner = archiver.getOverrideDirectoryOwner();
+        final Owner oldFileOwner = archiver.getOverrideFileOwner();
 
         if ( fileMode != -1 )
         {
@@ -120,6 +131,19 @@ public class AddArtifactTask
             archiver.setDirectoryMode( directoryMode );
             dirModeSet = true;
         }
+
+        if ( fileOwner != null )
+        {
+            archiver.setFileOwner( fileOwner );
+            fileOwnerSet = true;
+        }
+
+        if ( directoryOwner != null )
+        {
+            archiver.setDirectoryOwner( directoryOwner );
+            dirOwnerSet = true;
+        }
+
         try
         {
 
@@ -134,6 +158,16 @@ public class AddArtifactTask
         }
         finally
         {
+            if ( dirOwnerSet )
+            {
+                archiver.setDirectoryOwner( oldDirOwner );
+            }
+
+            if ( fileOwnerSet )
+            {
+                archiver.setFileOwner( oldFileOwner );
+            }
+
             if ( dirModeSet )
             {
                 archiver.setDirectoryMode( oldDirMode );
@@ -276,6 +310,16 @@ public class AddArtifactTask
     public void setFileMode( final int fileMode )
     {
         this.fileMode = fileMode;
+    }
+
+    public void setDirectoryOwner( Owner directoryOwner )
+    {
+        this.directoryOwner = directoryOwner;
+    }
+
+    public void setFileOwner( Owner fileOwner )
+    {
+        this.fileOwner = fileOwner;
     }
 
     public void setExcludes( final List<String> excludes )

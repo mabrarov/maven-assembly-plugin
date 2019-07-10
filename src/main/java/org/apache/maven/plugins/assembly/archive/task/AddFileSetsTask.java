@@ -28,6 +28,7 @@ import org.apache.maven.plugins.assembly.utils.AssemblyFormatUtils;
 import org.apache.maven.plugins.assembly.utils.TypeConversionUtils;
 import org.apache.maven.project.MavenProject;
 import org.codehaus.plexus.archiver.Archiver;
+import org.codehaus.plexus.archiver.Owner;
 import org.codehaus.plexus.components.io.functions.InputStreamTransformer;
 import org.codehaus.plexus.logging.Logger;
 import org.codehaus.plexus.logging.console.ConsoleLogger;
@@ -159,6 +160,18 @@ public class AddFileSetsTask
             if ( fileMode != -1 )
             {
                 task.setFileMode( fileMode );
+            }
+
+            final Owner directoryOwner = TypeConversionUtils.ownerInfoToOwner( fileSet.getDirectoryOwner(), logger );
+            if ( directoryOwner != null )
+            {
+                task.setDirectoryOwner( directoryOwner );
+            }
+
+            final Owner fileOwner = TypeConversionUtils.ownerInfoToOwner( fileSet.getFileOwner(), logger );
+            if ( fileOwner != null )
+            {
+                task.setFileOwner( fileOwner );
             }
 
             task.setUseDefaultExcludes( fileSet.isUseDefaultExcludes() );

@@ -45,6 +45,7 @@ import org.apache.maven.plugins.assembly.utils.TypeConversionUtils;
 import org.apache.maven.project.MavenProject;
 import org.apache.maven.project.ProjectBuilder;
 import org.codehaus.plexus.archiver.Archiver;
+import org.codehaus.plexus.archiver.Owner;
 import org.codehaus.plexus.archiver.manager.ArchiverManager;
 import org.codehaus.plexus.component.annotations.Component;
 import org.codehaus.plexus.component.annotations.Requirement;
@@ -394,6 +395,18 @@ public class ModuleSetAssemblyPhase
         if ( fileMode != -1 )
         {
             task.setFileMode( fileMode );
+        }
+
+        final Owner directoryOwner = TypeConversionUtils.ownerInfoToOwner( binaries.getDirectoryOwner(), getLogger() );
+        if ( directoryOwner != null )
+        {
+            task.setDirectoryOwner( directoryOwner );
+        }
+
+        final Owner fileOwner = TypeConversionUtils.ownerInfoToOwner( binaries.getFileOwner(), getLogger() );
+        if ( fileOwner != null )
+        {
+            task.setFileOwner( fileOwner );
         }
 
         task.setUnpack( binaries.isUnpack() );

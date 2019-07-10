@@ -20,6 +20,9 @@ package org.apache.maven.plugins.assembly.utils;
  */
 
 import org.apache.maven.plugins.assembly.format.AssemblyFormattingException;
+import org.apache.maven.plugins.assembly.model.OwnerEntity;
+import org.apache.maven.plugins.assembly.model.OwnerInfo;
+import org.codehaus.plexus.archiver.Owner;
 import org.codehaus.plexus.logging.Logger;
 
 import java.util.List;
@@ -85,6 +88,33 @@ public final class TypeConversionUtils
         {
             throw new AssemblyFormattingException( "Failed to parse mode as an octal number: \'" + mode + "\'.", e );
         }
+    }
+
+    public static Owner ownerInfoToOwner( final OwnerInfo ownerInfo, final Logger logger )
+        throws AssemblyFormattingException
+    {
+        if ( ownerInfo == null )
+        {
+            return null;
+        }
+        final OwnerEntity user = ownerInfo.getUser();
+        final OwnerEntity group = ownerInfo.getGroup();
+        if ( user == null && group == null )
+        {
+            return null;
+        }
+        final Owner owner = new Owner();
+        if ( user != null )
+        {
+            owner.setUserName( user.getName() );
+            owner.setUserId( ownerIdToInteger( user.getId() ) );
+        }
+        if ( group != null )
+        {
+            owner.setGroupName( group.getName() );
+            owner.setGroupId( ownerIdToInteger( group.getId() ) );
+        }
+        return owner;
     }
 
     // the boolean return type is for people who want to make a decision based on the sanity
@@ -166,4 +196,20 @@ public final class TypeConversionUtils
         return !warn;
     }
 
+    public static Integer ownerIdToInteger( final String id ) throws AssemblyFormattingException
+    {
+        if ( id == null )
+        {
+            return null;
+        }
+        try
+        {
+            return Integer.parseInt( id );
+        }
+        catch ( final NumberFormatException e )
+        {
+            throw new AssemblyFormattingException(
+                "Failed to parse UID or GID as an integer number: \'" + id + "\'.", e );
+        }
+    }
 }

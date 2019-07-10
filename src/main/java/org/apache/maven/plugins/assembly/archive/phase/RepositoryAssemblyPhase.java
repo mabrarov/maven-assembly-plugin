@@ -35,6 +35,7 @@ import org.apache.maven.plugins.assembly.repository.model.RepositoryInfo;
 import org.apache.maven.plugins.assembly.utils.AssemblyFormatUtils;
 import org.apache.maven.plugins.assembly.utils.TypeConversionUtils;
 import org.codehaus.plexus.archiver.Archiver;
+import org.codehaus.plexus.archiver.Owner;
 import org.codehaus.plexus.component.annotations.Component;
 import org.codehaus.plexus.component.annotations.Requirement;
 import org.codehaus.plexus.logging.AbstractLogEnabled;
@@ -116,6 +117,19 @@ public class RepositoryAssemblyPhase
             if ( fileMode != -1 )
             {
                 task.setFileMode( fileMode );
+            }
+
+            final Owner directoryOwner = TypeConversionUtils.ownerInfoToOwner( repository.getDirectoryOwner(),
+                getLogger() );
+            if ( directoryOwner != null )
+            {
+                task.setDirectoryOwner( directoryOwner );
+            }
+
+            final Owner fileOwner = TypeConversionUtils.ownerInfoToOwner( repository.getFileOwner(), getLogger() );
+            if ( fileOwner != null )
+            {
+                task.setFileOwner( fileOwner );
             }
 
             task.setOutputDirectory( outputDirectory );

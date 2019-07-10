@@ -23,6 +23,7 @@ import org.apache.maven.plugins.assembly.archive.ArchiveCreationException;
 import org.apache.maven.plugins.assembly.utils.AssemblyFormatUtils;
 import org.codehaus.plexus.archiver.Archiver;
 import org.codehaus.plexus.archiver.ArchiverException;
+import org.codehaus.plexus.archiver.Owner;
 import org.codehaus.plexus.archiver.util.DefaultFileSet;
 import org.codehaus.plexus.components.io.functions.InputStreamTransformer;
 
@@ -51,6 +52,10 @@ public class AddDirectoryTask
     private int directoryMode = -1;
 
     private int fileMode = -1;
+
+    private Owner directoryOwner;
+
+    private Owner fileOwner;
 
     public AddDirectoryTask( final File directory, InputStreamTransformer transformers )
     {
@@ -81,8 +86,14 @@ public class AddDirectoryTask
         final int oldDirMode = archiver.getOverrideDirectoryMode();
         final int oldFileMode = archiver.getOverrideFileMode();
 
+        final Owner oldDirOwner = archiver.getOverrideDirectoryOwner();
+        final Owner oldFileOwner = archiver.getOverrideFileOwner();
+
         boolean fileModeSet = false;
         boolean dirModeSet = false;
+
+        boolean fileOwnerSet = false;
+        boolean dirOwnerSet = false;
 
         try
         {
@@ -97,6 +108,19 @@ public class AddDirectoryTask
                 archiver.setFileMode( fileMode );
                 fileModeSet = true;
             }
+
+            if ( directoryOwner != null )
+            {
+                archiver.setDirectoryOwner( directoryOwner );
+                dirOwnerSet = true;
+            }
+
+            if ( fileOwner != null )
+            {
+                archiver.setFileOwner( fileOwner );
+                fileOwnerSet = true;
+            }
+
 
             if ( directory.exists() )
             {
@@ -154,6 +178,16 @@ public class AddDirectoryTask
         }
         finally
         {
+            if ( fileOwnerSet )
+            {
+                archiver.setFileOwner( oldFileOwner );
+            }
+
+            if ( dirOwnerSet )
+            {
+                archiver.setDirectoryOwner( oldDirOwner );
+            }
+
             if ( dirModeSet )
             {
                 archiver.setDirectoryMode( oldDirMode );
@@ -200,6 +234,16 @@ public class AddDirectoryTask
     public void setFileMode( final int fileMode )
     {
         this.fileMode = fileMode;
+    }
+
+    public void setDirectoryOwner( Owner directoryOwner )
+    {
+        this.directoryOwner = directoryOwner;
+    }
+
+    public void setFileOwner( Owner fileOwner )
+    {
+        this.fileOwner = fileOwner;
     }
 
     public void setUseDefaultExcludes( final boolean useDefaultExcludes )

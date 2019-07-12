@@ -26,6 +26,7 @@ import org.apache.maven.project.MavenProject;
 import org.codehaus.plexus.archiver.Archiver;
 import org.codehaus.plexus.archiver.ArchiverException;
 import org.codehaus.plexus.archiver.FileSet;
+import org.codehaus.plexus.archiver.Owner;
 import org.easymock.EasyMock;
 import org.easymock.classextension.EasyMockSupport;
 
@@ -130,6 +131,21 @@ public class MockAndControlForAddFileSetsTask
             }
         }
 
+    }
+
+    public void expectGetOwner( final Owner originalDirOwner, final Owner originalFileOwner )
+    {
+        // TODO: fix validation of expected owner:
+        // compare not just references but properties of returned Owner instance, make verification null safe
+        expect( archiver.getOverrideDirectoryOwner() ).andReturn( originalDirOwner );
+        // TODO: fix validation of expected owner:
+        // compare not just references but properties of returned Owner instance, make verification null safe
+        expect( archiver.getOverrideFileOwner() ).andReturn( originalFileOwner );
+
+        archiver.setFileOwner( org.easymock.EasyMock.<Owner> anyObject() );
+        org.easymock.EasyMock.expectLastCall().anyTimes();
+        archiver.setDirectoryOwner( org.easymock.EasyMock.<Owner> anyObject() );
+        org.easymock.EasyMock.expectLastCall().anyTimes();
     }
 
     public void expectGetProject( MavenProject project )

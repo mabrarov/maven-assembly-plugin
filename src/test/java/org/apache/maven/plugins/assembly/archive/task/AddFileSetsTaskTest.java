@@ -144,6 +144,7 @@ public class AddFileSetsTaskTest
         final int[] modes = { -1, -1, -1, -1 };
 
         macTask.expectAdditionOfSingleFileSet( null, null, true, modes, 1, true, false );
+        macTask.expectGetOwner( null, null );
 
 //        macTask.expectGetProject( null );
 
@@ -180,6 +181,7 @@ public class AddFileSetsTaskTest
         final int[] modes = { -1, -1, -1, -1 };
 
         macTask.expectAdditionOfSingleFileSet( null, null, true, modes, 1, true, false );
+        macTask.expectGetOwner( null, null );
 
         //macTask.expectGetProject( null );
 

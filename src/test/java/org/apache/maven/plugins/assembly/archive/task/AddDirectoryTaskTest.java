@@ -25,6 +25,7 @@ import org.apache.maven.plugins.assembly.testutils.TestFileManager;
 import org.codehaus.plexus.archiver.Archiver;
 import org.codehaus.plexus.archiver.ArchiverException;
 import org.codehaus.plexus.archiver.FileSet;
+import org.codehaus.plexus.archiver.Owner;
 import org.easymock.classextension.EasyMockSupport;
 
 import java.io.File;
@@ -66,6 +67,7 @@ public class AddDirectoryTaskTest
         File dir = new File( System.getProperty( "java.io.tmpdir" ), "non-existent." + System.currentTimeMillis() );
 
         configureModeExpectations( -1, -1, -1, -1, false );
+        configureOwnerExpectations( null, null, null, null, false );
 
         mockManager.replayAll();
 
@@ -91,6 +93,7 @@ public class AddDirectoryTaskTest
         }
 
         configureModeExpectations( -1, -1, -1, -1, false );
+        configureOwnerExpectations( null, null, null, null, false );
 
         mockManager.replayAll();
 
@@ -121,6 +124,8 @@ public class AddDirectoryTaskTest
         int fileMode = Integer.parseInt( "777", 8 );
 
         configureModeExpectations( -1, -1, dirMode, fileMode, true );
+        // TODO: add test for validation of owner changing
+        configureOwnerExpectations( null, null, null, null, false );
 
         mockManager.replayAll();
 
@@ -150,6 +155,7 @@ public class AddDirectoryTaskTest
         }
 
         configureModeExpectations( -1, -1, -1, -1, false );
+        configureOwnerExpectations( null, null, null, null, false );
 
         mockManager.replayAll();
 
@@ -191,6 +197,40 @@ public class AddDirectoryTaskTest
         if ( fileMode > -1 )
         {
             archiver.setFileMode( defaultFileMode );
+        }
+    }
+
+    private void configureOwnerExpectations( Owner defaultDirOwner, Owner defaultFileOwner, Owner dirOwner,
+                                             Owner fileOwner, boolean expectTwoSets )
+    {
+        // TODO: fix validation of expected owner:
+        // compare not just references but properties of returned Owner instance, make verification null safe
+        expect( archiver.getOverrideDirectoryOwner() ).andReturn( defaultDirOwner );
+        // TODO: fix validation of expected owner:
+        // compare not just references but properties of returned Owner instance, make verification null safe
+        expect( archiver.getOverrideFileOwner() ).andReturn( defaultFileOwner );
+
+        if ( expectTwoSets )
+        {
+            if ( dirOwner != null )
+            {
+                archiver.setDirectoryOwner( dirOwner );
+            }
+
+            if ( fileOwner != null )
+            {
+                archiver.setFileOwner( fileOwner );
+            }
+        }
+
+        if ( dirOwner != null )
+        {
+            archiver.setDirectoryOwner( defaultDirOwner );
+        }
+
+        if ( fileOwner != null )
+        {
+            archiver.setFileOwner( defaultFileOwner );
         }
     }
 

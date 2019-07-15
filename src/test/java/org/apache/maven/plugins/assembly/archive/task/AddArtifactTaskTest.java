@@ -76,6 +76,7 @@ public class AddArtifactTaskTest
         File artifactFile = artifactMock.setNewFile();
 
         mac.expectGetMode( 0222, 0222 );
+        mac.expectGetOwner( null, null );
         mac.expectGetDestFile( new File( "junk" ) );
         mac.expectAddFile( artifactFile, outputLocation );
         mac.expectInterpolators();
@@ -103,6 +104,7 @@ public class AddArtifactTaskTest
         mock.setExtension( ext );
 
         mac.expectGetMode( 0222, 0222 );
+        mac.expectGetOwner( null, null );
 
         mac.expectGetDestFile( new File( "junk" ) );
         mac.expectAddFile( file, outputDir + artifactId + "-" + version + "." + ext );
@@ -139,6 +141,8 @@ public class AddArtifactTaskTest
         throws ArchiveCreationException, AssemblyFormattingException, IOException
     {
         mac.expectModeChange( -1, -1, -1, -1, 1 );
+        // TODO: replace with expectOwnerChange 
+        mac.expectGetOwner( null, null );
         mac.expectInterpolators();
 
         ArtifactMock artifactMock = new ArtifactMock( mockManager, "group", "artifact", "version", "jar", false );
@@ -174,6 +178,8 @@ public class AddArtifactTaskTest
         int fileMode = TypeConversionUtils.modeToInt( "777", new ConsoleLogger( Logger.LEVEL_DEBUG, "test" ) );
 
         mac.expectModeChange( -1, -1, directoryMode, fileMode, 2 );
+        // TODO: replace with expectOwnerChange 
+        mac.expectGetOwner( null, null );
         mac.expectInterpolators();
 
         ArtifactMock artifactMock = new ArtifactMock( mockManager, "group", "artifact", "version", "jar", false );
@@ -207,6 +213,8 @@ public class AddArtifactTaskTest
         throws ArchiveCreationException, AssemblyFormattingException, IOException
     {
         mac.expectModeChange( -1, -1, -1, -1, 1 );
+        // TODO: replace with expectOwnerChange 
+        mac.expectGetOwner( null, null );
 
         String[] includes = { "**/*.txt" };
         String[] excludes = { "**/README.txt" };

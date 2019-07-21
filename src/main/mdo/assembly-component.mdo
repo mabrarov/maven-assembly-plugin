@@ -253,7 +253,18 @@
           <description>
             <![CDATA[
             Sets the owner of the files included.
-            If not specified then is taken from file system.
+            If not specified then is taken from filesystem.
+            Support of this attribute depends on format:
+            <ul>
+              <li>For <b>"tar*"</b> and <b>"dir"</b> formats - all sub-attributes are supported</li>
+              <li>For <b>"zip"</b> format - only UNIX UID ("user/id" sub-attribute) and
+              UNIX GID ("group/id" sub-attribute) are supported, support is implemented with extra field that stores
+              UNIX UID/GID data - refer to
+              <a href="https://commons.apache.org/proper/commons-compress/apidocs/org/apache/commons/compress/archivers/zip/X7875_NewUnix.html">
+              org.apache.commons.compress.archivers.zip.X7875_NewUnix</a>. If not specified and if filesystem doesn't
+              support UNIX UID/GID, then nothing will be stored in created archive</li>
+              <li>For other formats support is not guaranteed</li>
+            </ul>
             ]]>
           </description>
         </field>
@@ -266,7 +277,18 @@
           <description>
             <![CDATA[
             Sets the owner of the directories included.
-            If not specified then is taken from file system.
+            If not specified then is taken from filesystem.
+            Support of this attribute depends on format:
+            <ul>
+              <li>For <b>"tar*"</b> and <b>"dir"</b> formats - all sub-attributes are supported</li>
+              <li>For <b>"zip"</b> format - only UNIX UID ("user/id" sub-attribute) and
+              UNIX GID ("group/id" sub-attribute) are supported, support is implemented with extra field that stores
+              UNIX UID/GID data - refer to
+              <a href="https://commons.apache.org/proper/commons-compress/apidocs/org/apache/commons/compress/archivers/zip/X7875_NewUnix.html">
+              org.apache.commons.compress.archivers.zip.X7875_NewUnix</a>. If not specified and if filesystem doesn't
+              support UNIX UID/GID, then nothing will be stored in created archive</li>
+              <li>For other formats support is not guaranteed</li>
+            </ul>
             ]]>
           </description>
         </field>
@@ -376,7 +398,18 @@
           <description>
             <![CDATA[
             Sets the owner of the files included.
-            If not specified then is taken from file system.
+            If not specified then is taken from filesystem.
+            Support of this attribute depends on format:
+            <ul>
+              <li>For <b>"tar*"</b> and <b>"dir"</b> formats - all sub-attributes are supported</li>
+              <li>For <b>"zip"</b> format - only UNIX UID ("user/id" sub-attribute) and
+              UNIX GID ("group/id" sub-attribute) are supported, support is implemented with extra field that stores
+              UNIX UID/GID data - refer to
+              <a href="https://commons.apache.org/proper/commons-compress/apidocs/org/apache/commons/compress/archivers/zip/X7875_NewUnix.html">
+              org.apache.commons.compress.archivers.zip.X7875_NewUnix</a>. If not specified and if filesystem doesn't
+              support UNIX UID/GID, then nothing will be stored in created archive</li>
+              <li>For other formats support is not guaranteed</li>
+            </ul>
             ]]>
           </description>
         </field>
@@ -512,7 +545,18 @@
           <description>
             <![CDATA[
             Sets the owner of the files included.
-            If not specified then is taken from file system.
+            If not specified then is taken from filesystem.
+            Support of this attribute depends on format:
+            <ul>
+              <li>For <b>"tar*"</b> and <b>"dir"</b> formats - all sub-attributes are supported</li>
+              <li>For <b>"zip"</b> format - only UNIX UID ("user/id" sub-attribute) and
+              UNIX GID ("group/id" sub-attribute) are supported, support is implemented with extra field that stores
+              UNIX UID/GID data - refer to
+              <a href="https://commons.apache.org/proper/commons-compress/apidocs/org/apache/commons/compress/archivers/zip/X7875_NewUnix.html">
+              org.apache.commons.compress.archivers.zip.X7875_NewUnix</a>. If not specified and if filesystem doesn't
+              support UNIX UID/GID, then nothing will be stored in created archive</li>
+              <li>For other formats support is not guaranteed</li>
+            </ul>
             ]]>
           </description>
         </field>
@@ -525,7 +569,18 @@
           <description>
             <![CDATA[
             Sets the owner of the directories included.
-            If not specified then is taken from file system.
+            If not specified then is taken from filesystem.
+            Support of this attribute depends on format:
+            <ul>
+              <li>For <b>"tar*"</b> and <b>"dir"</b> formats - all sub-attributes are supported</li>
+              <li>For <b>"zip"</b> format - only UNIX UID ("user/id" sub-attribute) and
+              UNIX GID ("group/id" sub-attribute) are supported, support is implemented with extra field that stores
+              UNIX UID/GID data - refer to
+              <a href="https://commons.apache.org/proper/commons-compress/apidocs/org/apache/commons/compress/archivers/zip/X7875_NewUnix.html">
+              org.apache.commons.compress.archivers.zip.X7875_NewUnix</a>. If not specified and if filesystem doesn't
+              support UNIX UID/GID, then nothing will be stored in created archive</li>
+              <li>For other formats support is not guaranteed</li>
+            </ul>
             ]]>
           </description>
         </field>
@@ -847,7 +902,18 @@
           <description>
             <![CDATA[
             Sets the owner of the files included.
-            If not specified then is taken from file system.
+            If not specified then is taken from filesystem.
+            Support of this attribute depends on format:
+            <ul>
+              <li>For <b>"tar*"</b> and <b>"dir"</b> formats - all sub-attributes are supported</li>
+              <li>For <b>"zip"</b> format - only UNIX UID ("user/id" sub-attribute) and
+              UNIX GID ("group/id" sub-attribute) are supported, support is implemented with extra field that stores
+              UNIX UID/GID data - refer to
+              <a href="https://commons.apache.org/proper/commons-compress/apidocs/org/apache/commons/compress/archivers/zip/X7875_NewUnix.html">
+              org.apache.commons.compress.archivers.zip.X7875_NewUnix</a>. If not specified and if filesystem doesn't
+              support UNIX UID/GID, then nothing will be stored in created archive</li>
+              <li>For other formats support is not guaranteed</li>
+            </ul>
             ]]>
           </description>
         </field>
@@ -860,7 +926,18 @@
           <description>
             <![CDATA[
             Sets the owner of the directories included.
-            If not specified then is taken from file system.
+            If not specified then is taken from filesystem.
+            Support of this attribute depends on format:
+            <ul>
+              <li>For <b>"tar*"</b> and <b>"dir"</b> formats - all sub-attributes are supported</li>
+              <li>For <b>"zip"</b> format - only UNIX UID ("user/id" sub-attribute) and
+              UNIX GID ("group/id" sub-attribute) are supported, support is implemented with extra field that stores
+              UNIX UID/GID data - refer to
+              <a href="https://commons.apache.org/proper/commons-compress/apidocs/org/apache/commons/compress/archivers/zip/X7875_NewUnix.html">
+              org.apache.commons.compress.archivers.zip.X7875_NewUnix</a>. If not specified and if filesystem doesn't
+              support UNIX UID/GID, then nothing will be stored in created archive</li>
+              <li>For other formats support is not guaranteed</li>
+            </ul>
             ]]>
           </description>
         </field>
@@ -1022,7 +1099,18 @@
           <description>
             <![CDATA[
             Sets the owner of the files included.
-            If not specified then is taken from file system.
+            If not specified then is taken from filesystem.
+            Support of this attribute depends on format:
+            <ul>
+              <li>For <b>"tar*"</b> and <b>"dir"</b> formats - all sub-attributes are supported</li>
+              <li>For <b>"zip"</b> format - only UNIX UID ("user/id" sub-attribute) and
+              UNIX GID ("group/id" sub-attribute) are supported, support is implemented with extra field that stores
+              UNIX UID/GID data - refer to
+              <a href="https://commons.apache.org/proper/commons-compress/apidocs/org/apache/commons/compress/archivers/zip/X7875_NewUnix.html">
+              org.apache.commons.compress.archivers.zip.X7875_NewUnix</a>. If not specified and if filesystem doesn't
+              support UNIX UID/GID, then nothing will be stored in created archive</li>
+              <li>For other formats support is not guaranteed</li>
+            </ul>
             ]]>
           </description>
         </field>
@@ -1035,7 +1123,18 @@
           <description>
             <![CDATA[
             Sets the owner of the directories included.
-            If not specified then is taken from file system.
+            If not specified then is taken from filesystem.
+            Support of this attribute depends on format:
+            <ul>
+              <li>For <b>"tar*"</b> and <b>"dir"</b> formats - all sub-attributes are supported</li>
+              <li>For <b>"zip"</b> format - only UNIX UID ("user/id" sub-attribute) and
+              UNIX GID ("group/id" sub-attribute) are supported, support is implemented with extra field that stores
+              UNIX UID/GID data - refer to
+              <a href="https://commons.apache.org/proper/commons-compress/apidocs/org/apache/commons/compress/archivers/zip/X7875_NewUnix.html">
+              org.apache.commons.compress.archivers.zip.X7875_NewUnix</a>. If not specified and if filesystem doesn't
+              support UNIX UID/GID, then nothing will be stored in created archive</li>
+              <li>For other formats support is not guaranteed</li>
+            </ul>
             ]]>
           </description>
         </field>
@@ -1227,7 +1326,18 @@
           <description>
             <![CDATA[
             Sets the owner of the files included.
-            If not specified then is taken from file system.
+            If not specified then is taken from filesystem.
+            Support of this attribute depends on format:
+            <ul>
+              <li>For <b>"tar*"</b> and <b>"dir"</b> formats - all sub-attributes are supported</li>
+              <li>For <b>"zip"</b> format - only UNIX UID ("user/id" sub-attribute) and
+              UNIX GID ("group/id" sub-attribute) are supported, support is implemented with extra field that stores
+              UNIX UID/GID data - refer to
+              <a href="https://commons.apache.org/proper/commons-compress/apidocs/org/apache/commons/compress/archivers/zip/X7875_NewUnix.html">
+              org.apache.commons.compress.archivers.zip.X7875_NewUnix</a>. If not specified and if filesystem doesn't
+              support UNIX UID/GID, then nothing will be stored in created archive</li>
+              <li>For other formats support is not guaranteed</li>
+            </ul>
             ]]>
           </description>
         </field>
@@ -1240,7 +1350,18 @@
           <description>
             <![CDATA[
             Sets the owner of the directories included.
-            If not specified then is taken from file system.
+            If not specified then is taken from filesystem.
+            Support of this attribute depends on format:
+            <ul>
+              <li>For <b>"tar*"</b> and <b>"dir"</b> formats - all sub-attributes are supported</li>
+              <li>For <b>"zip"</b> format - only UNIX UID ("user/id" sub-attribute) and
+              UNIX GID ("group/id" sub-attribute) are supported, support is implemented with extra field that stores
+              UNIX UID/GID data - refer to
+              <a href="https://commons.apache.org/proper/commons-compress/apidocs/org/apache/commons/compress/archivers/zip/X7875_NewUnix.html">
+              org.apache.commons.compress.archivers.zip.X7875_NewUnix</a>. If not specified and if filesystem doesn't
+              support UNIX UID/GID, then nothing will be stored in created archive</li>
+              <li>For other formats support is not guaranteed</li>
+            </ul>
             ]]>
           </description>
         </field>
@@ -1453,7 +1574,7 @@
           <version>2.1.0+</version>
           <description>
             <![CDATA[
-            Name of entity. Similar to a UNIX user name or group name.
+            Name of entity. Similar to a UNIX &amp; Windows user name or group name.
             If not specified then is taken from file system.
             ]]>
           </description>
@@ -1487,8 +1608,16 @@
           <version>2.1.0+</version>
           <description>
             <![CDATA[
-            User owning file or directory.
-            If not specified then is taken from file system.
+            User owning file or directory. Support of this attribute depends on format and platform:
+            <ul>
+              <li>For <b>"tar*"</b> formats - all sub-attributes are supported on all platforms</li>
+              <li>For <b>"dir"</b> format - only "name" sub-attribute is supported on all platforms</li>
+              <li>For <b>"zip"</b> format - only UNIX UID ("id" sub-attribute) is supported, support is implemented
+              with extra field that stores UNIX UID data - refer to
+              <a href="https://commons.apache.org/proper/commons-compress/apidocs/org/apache/commons/compress/archivers/zip/X7875_NewUnix.html">
+              org.apache.commons.compress.archivers.zip.X7875_NewUnix</a></li>
+              <li>For other formats support is not guaranteed</li>
+            </ul>
             ]]>
           </description>
           <association>
@@ -1501,8 +1630,17 @@
           <version>2.1.0+</version>
           <description>
             <![CDATA[
-            Group owning file or directory.
-            If not specified then is taken from file system.
+            Group owning file or directory. Support of this attribute depends on format and platform:
+            <ul>
+              <li>For <b>"tar*"</b> formats - all sub-attributes are supported on all platforms</li>
+              <li>For <b>"dir"</b> format - only "name" sub-attribute is supported only on platforms / filesystems which
+              have concept of group ownership of file / directory</li>
+              <li>For <b>"zip"</b> format - only UNIX GID ("id" sub-attribute) is supported, support is implemented
+              with extra field that stores UNIX GID data - refer to
+              <a href="https://commons.apache.org/proper/commons-compress/apidocs/org/apache/commons/compress/archivers/zip/X7875_NewUnix.html">
+              org.apache.commons.compress.archivers.zip.X7875_NewUnix</a></li>
+              <li>For other formats support is not guaranteed</li>
+            </ul>
             ]]>
           </description>
           <association>

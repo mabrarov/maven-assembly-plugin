@@ -28,7 +28,7 @@ import org.apache.maven.plugins.assembly.utils.AssemblyFormatUtils;
 import org.apache.maven.plugins.assembly.utils.TypeConversionUtils;
 import org.apache.maven.project.MavenProject;
 import org.codehaus.plexus.archiver.Archiver;
-import org.codehaus.plexus.archiver.Owner;
+import org.codehaus.plexus.archiver.Ownership;
 import org.codehaus.plexus.components.io.functions.InputStreamTransformer;
 import org.codehaus.plexus.logging.Logger;
 import org.codehaus.plexus.logging.console.ConsoleLogger;
@@ -162,16 +162,18 @@ public class AddFileSetsTask
                 task.setFileMode( fileMode );
             }
 
-            final Owner directoryOwner = TypeConversionUtils.ownerInfoToOwner( fileSet.getDirectoryOwner(), logger );
-            if ( directoryOwner != null )
+            final Ownership directoryOwnership = TypeConversionUtils.ownershipInfoToOwnership(
+                fileSet.getDirectoryOwnership(), logger );
+            if ( directoryOwnership != null )
             {
-                task.setDirectoryOwner( directoryOwner );
+                task.setDirectoryOwnership( directoryOwnership );
             }
 
-            final Owner fileOwner = TypeConversionUtils.ownerInfoToOwner( fileSet.getFileOwner(), logger );
-            if ( fileOwner != null )
+            final Ownership fileOwnership = TypeConversionUtils.ownershipInfoToOwnership(
+                fileSet.getFileOwnership(), logger );
+            if ( fileOwnership != null )
             {
-                task.setFileOwner( fileOwner );
+                task.setFileOwnership( fileOwnership );
             }
 
             task.setUseDefaultExcludes( fileSet.isUseDefaultExcludes() );

@@ -33,7 +33,7 @@ import org.apache.maven.project.MavenProject;
 import org.apache.maven.shared.utils.Os;
 import org.codehaus.plexus.archiver.Archiver;
 import org.codehaus.plexus.archiver.ArchiverException;
-import org.codehaus.plexus.archiver.Owner;
+import org.codehaus.plexus.archiver.Ownership;
 import org.codehaus.plexus.components.io.resources.PlexusIoResource;
 import org.codehaus.plexus.interpolation.fixed.FixedStringSearchInterpolator;
 import org.codehaus.plexus.logging.Logger;
@@ -444,7 +444,7 @@ public class FileItemAssemblyPhaseTest
             try
             {
                 archiver.addResource( (PlexusIoResource) anyObject(), (String) anyObject(), anyInt(),
-                    EasyMock.<Owner>anyObject() );
+                    EasyMock.<Ownership>anyObject() );
             }
             catch ( final ArchiverException e )
             {

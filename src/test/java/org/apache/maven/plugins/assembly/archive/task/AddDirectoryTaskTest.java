@@ -25,7 +25,7 @@ import org.apache.maven.plugins.assembly.testutils.TestFileManager;
 import org.codehaus.plexus.archiver.Archiver;
 import org.codehaus.plexus.archiver.ArchiverException;
 import org.codehaus.plexus.archiver.FileSet;
-import org.codehaus.plexus.archiver.Owner;
+import org.codehaus.plexus.archiver.Ownership;
 import org.easymock.classextension.EasyMockSupport;
 
 import java.io.File;
@@ -67,7 +67,7 @@ public class AddDirectoryTaskTest
         File dir = new File( System.getProperty( "java.io.tmpdir" ), "non-existent." + System.currentTimeMillis() );
 
         configureModeExpectations( -1, -1, -1, -1, false );
-        configureOwnerExpectations( null, null, null, null, false );
+        configureOwnershipExpectations( null, null, null, null, false );
 
         mockManager.replayAll();
 
@@ -93,7 +93,7 @@ public class AddDirectoryTaskTest
         }
 
         configureModeExpectations( -1, -1, -1, -1, false );
-        configureOwnerExpectations( null, null, null, null, false );
+        configureOwnershipExpectations( null, null, null, null, false );
 
         mockManager.replayAll();
 
@@ -125,7 +125,7 @@ public class AddDirectoryTaskTest
 
         configureModeExpectations( -1, -1, dirMode, fileMode, true );
         // TODO: add test for validation of owner changing
-        configureOwnerExpectations( null, null, null, null, false );
+        configureOwnershipExpectations( null, null, null, null, false );
 
         mockManager.replayAll();
 
@@ -155,7 +155,7 @@ public class AddDirectoryTaskTest
         }
 
         configureModeExpectations( -1, -1, -1, -1, false );
-        configureOwnerExpectations( null, null, null, null, false );
+        configureOwnershipExpectations( null, null, null, null, false );
 
         mockManager.replayAll();
 
@@ -200,37 +200,38 @@ public class AddDirectoryTaskTest
         }
     }
 
-    private void configureOwnerExpectations( Owner defaultDirOwner, Owner defaultFileOwner, Owner dirOwner,
-                                             Owner fileOwner, boolean expectTwoSets )
+    private void configureOwnershipExpectations( Ownership defaultDirOwnership, Ownership defaultFileOwnership,
+                                                 Ownership dirOwnership, Ownership fileOwnership,
+                                                 boolean expectTwoSets )
     {
-        // TODO: fix validation of expected owner:
-        // compare not just references but properties of returned Owner instance, make verification null safe
-        expect( archiver.getOverrideDirectoryOwner() ).andReturn( defaultDirOwner );
-        // TODO: fix validation of expected owner:
-        // compare not just references but properties of returned Owner instance, make verification null safe
-        expect( archiver.getOverrideFileOwner() ).andReturn( defaultFileOwner );
+        // TODO: fix validation of expected ownership:
+        // compare not just references but properties of returned Ownership instance, make verification null safe
+        expect( archiver.getOverrideDirectoryOwnership() ).andReturn( defaultDirOwnership );
+        // TODO: fix validation of expected ownership:
+        // compare not just references but properties of returned Ownership instance, make verification null safe
+        expect( archiver.getOverrideFileOwnership() ).andReturn( defaultFileOwnership );
 
         if ( expectTwoSets )
         {
-            if ( dirOwner != null )
+            if ( dirOwnership != null )
             {
-                archiver.setDirectoryOwner( dirOwner );
+                archiver.setDirectoryOwnership( dirOwnership );
             }
 
-            if ( fileOwner != null )
+            if ( fileOwnership != null )
             {
-                archiver.setFileOwner( fileOwner );
+                archiver.setFileOwnership( fileOwnership );
             }
         }
 
-        if ( dirOwner != null )
+        if ( dirOwnership != null )
         {
-            archiver.setDirectoryOwner( defaultDirOwner );
+            archiver.setDirectoryOwnership( defaultDirOwnership );
         }
 
-        if ( fileOwner != null )
+        if ( fileOwnership != null )
         {
-            archiver.setFileOwner( defaultFileOwner );
+            archiver.setFileOwnership( defaultFileOwnership );
         }
     }
 

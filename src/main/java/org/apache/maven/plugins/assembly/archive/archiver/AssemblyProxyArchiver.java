@@ -27,7 +27,7 @@ import org.codehaus.plexus.archiver.Archiver;
 import org.codehaus.plexus.archiver.ArchiverException;
 import org.codehaus.plexus.archiver.FileSet;
 import org.codehaus.plexus.archiver.FinalizerEnabled;
-import org.codehaus.plexus.archiver.Owner;
+import org.codehaus.plexus.archiver.Ownership;
 import org.codehaus.plexus.archiver.ResourceIterator;
 import org.codehaus.plexus.archiver.util.DefaultArchivedFileSet;
 import org.codehaus.plexus.archiver.util.DefaultFileSet;
@@ -312,13 +312,13 @@ public class AssemblyProxyArchiver
      * {@inheritDoc}
      */
     @Override
-    public void addSymlink( String symlinkName, int permissions, Owner owner, String symlinkDestination )
+    public void addSymlink( String symlinkName, int permissions, Ownership ownership, String symlinkDestination )
         throws ArchiverException
     {
         inPublicApi.set( Boolean.TRUE );
         try
         {
-            delegate.addSymlink( symlinkName, permissions, owner, symlinkDestination );
+            delegate.addSymlink( symlinkName, permissions, ownership, symlinkDestination );
         }
         finally
         {
@@ -430,7 +430,7 @@ public class AssemblyProxyArchiver
      */
     @Override
     public void addFile( @Nonnull final File inputFile, @Nonnull final String destFileName, final int permissions,
-                         final Owner owner )
+                         final Ownership ownership )
     {
         if ( acceptFile( inputFile ) )
         {
@@ -439,7 +439,7 @@ public class AssemblyProxyArchiver
             {
                 debug( "Adding file: " + inputFile + " to archive location: " + rootPrefix + destFileName );
 
-                delegate.addFile( inputFile, rootPrefix + destFileName, permissions, owner );
+                delegate.addFile( inputFile, rootPrefix + destFileName, permissions, ownership );
             }
             finally
             {
@@ -527,12 +527,12 @@ public class AssemblyProxyArchiver
      * {@inheritDoc}
      */
     @Override
-    public Owner getDefaultDirectoryOwner()
+    public Ownership getDefaultDirectoryOwnership()
     {
         inPublicApi.set( Boolean.TRUE );
         try
         {
-            return delegate.getDefaultDirectoryOwner();
+            return delegate.getDefaultDirectoryOwnership();
         }
         finally
         {
@@ -544,12 +544,12 @@ public class AssemblyProxyArchiver
      * {@inheritDoc}
      */
     @Override
-    public void setDefaultDirectoryOwner( Owner owner )
+    public void setDefaultDirectoryOwnership( Ownership ownership )
     {
         inPublicApi.set( Boolean.TRUE );
         try
         {
-            delegate.setDefaultDirectoryOwner( owner );
+            delegate.setDefaultDirectoryOwnership( ownership );
         }
         finally
         {
@@ -595,12 +595,12 @@ public class AssemblyProxyArchiver
      * {@inheritDoc}
      */
     @Override
-    public Owner getDefaultFileOwner()
+    public Ownership getDefaultFileOwnership()
     {
         inPublicApi.set( Boolean.TRUE );
         try
         {
-            return delegate.getDefaultFileOwner();
+            return delegate.getDefaultFileOwnership();
         }
         finally
         {
@@ -612,12 +612,12 @@ public class AssemblyProxyArchiver
      * {@inheritDoc}
      */
     @Override
-    public void setDefaultFileOwner( Owner owner )
+    public void setDefaultFileOwnership( Ownership ownership )
     {
         inPublicApi.set( Boolean.TRUE );
         try
         {
-            delegate.setDefaultFileOwner( owner );
+            delegate.setDefaultFileOwnership( ownership );
         }
         finally
         {
@@ -942,7 +942,7 @@ public class AssemblyProxyArchiver
      */
     @Override
     public void addResource( final PlexusIoResource resource, final String destFileName, final int permissions,
-                             final Owner owner )
+                             final Ownership ownership )
     {
         File file = new File( resource.getName() ); // zOMG.
         if ( acceptFile( file ) )
@@ -951,7 +951,7 @@ public class AssemblyProxyArchiver
             inPublicApi.set( Boolean.TRUE );
             try
             {
-                delegate.addResource( resource, rootPrefix + destFileName, permissions, owner );
+                delegate.addResource( resource, rootPrefix + destFileName, permissions, ownership );
             }
             finally
             {
@@ -1043,12 +1043,12 @@ public class AssemblyProxyArchiver
      * {@inheritDoc}
      */
     @Override
-    public Owner getDirectoryOwner()
+    public Ownership getDirectoryOwnership()
     {
         inPublicApi.set( Boolean.TRUE );
         try
         {
-            return delegate.getDirectoryOwner();
+            return delegate.getDirectoryOwnership();
         }
         finally
         {
@@ -1060,12 +1060,12 @@ public class AssemblyProxyArchiver
      * {@inheritDoc}
      */
     @Override
-    public void setDirectoryOwner( Owner owner )
+    public void setDirectoryOwnership( Ownership ownership )
     {
         inPublicApi.set( Boolean.TRUE );
         try
         {
-            delegate.setDirectoryOwner( owner );
+            delegate.setDirectoryOwnership( ownership );
         }
         finally
         {
@@ -1103,12 +1103,12 @@ public class AssemblyProxyArchiver
      * {@inheritDoc}
      */
     @Override
-    public Owner getFileOwner()
+    public Ownership getFileOwnership()
     {
         inPublicApi.set( Boolean.TRUE );
         try
         {
-            return delegate.getFileOwner();
+            return delegate.getFileOwnership();
         }
         finally
         {
@@ -1120,12 +1120,12 @@ public class AssemblyProxyArchiver
      * {@inheritDoc}
      */
     @Override
-    public void setFileOwner( Owner owner )
+    public void setFileOwnership( Ownership ownership )
     {
         inPublicApi.set( Boolean.TRUE );
         try
         {
-            delegate.setFileOwner( owner );
+            delegate.setFileOwnership( ownership );
         }
         finally
         {
@@ -1146,12 +1146,12 @@ public class AssemblyProxyArchiver
      * {@inheritDoc}
      */
     @Override
-    public Owner getOverrideDirectoryOwner()
+    public Ownership getOverrideDirectoryOwnership()
     {
         inPublicApi.set( Boolean.TRUE );
         try
         {
-            return delegate.getOverrideDirectoryOwner();
+            return delegate.getOverrideDirectoryOwnership();
         }
         finally
         {
@@ -1172,12 +1172,12 @@ public class AssemblyProxyArchiver
      * {@inheritDoc}
      */
     @Override
-    public Owner getOverrideFileOwner()
+    public Ownership getOverrideFileOwnership()
     {
         inPublicApi.set( Boolean.TRUE );
         try
         {
-            return delegate.getOverrideFileOwner();
+            return delegate.getOverrideFileOwnership();
         }
         finally
         {
@@ -1225,12 +1225,12 @@ public class AssemblyProxyArchiver
      * {@inheritDoc}
      */
     @Override
-    public boolean isIgnoreOwner()
+    public boolean isIgnoreOwnership()
     {
         inPublicApi.set( Boolean.TRUE );
         try
         {
-            return delegate.isIgnoreOwner();
+            return delegate.isIgnoreOwnership();
         }
         finally
         {
@@ -1242,12 +1242,12 @@ public class AssemblyProxyArchiver
      * {@inheritDoc}
      */
     @Override
-    public void setIgnoreOwner( final boolean ignoreOwner )
+    public void setIgnoreOwnership( final boolean ignoreOwnership )
     {
         inPublicApi.set( Boolean.TRUE );
         try
         {
-            delegate.setIgnoreOwner( ignoreOwner );
+            delegate.setIgnoreOwnership( ignoreOwnership );
         }
         finally
         {

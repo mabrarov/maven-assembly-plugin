@@ -35,7 +35,7 @@ import org.apache.maven.plugins.assembly.repository.model.RepositoryInfo;
 import org.apache.maven.plugins.assembly.utils.AssemblyFormatUtils;
 import org.apache.maven.plugins.assembly.utils.TypeConversionUtils;
 import org.codehaus.plexus.archiver.Archiver;
-import org.codehaus.plexus.archiver.Owner;
+import org.codehaus.plexus.archiver.Ownership;
 import org.codehaus.plexus.component.annotations.Component;
 import org.codehaus.plexus.component.annotations.Requirement;
 import org.codehaus.plexus.logging.AbstractLogEnabled;
@@ -119,17 +119,18 @@ public class RepositoryAssemblyPhase
                 task.setFileMode( fileMode );
             }
 
-            final Owner directoryOwner = TypeConversionUtils.ownerInfoToOwner( repository.getDirectoryOwner(),
-                getLogger() );
-            if ( directoryOwner != null )
+            final Ownership directoryOwnership = TypeConversionUtils.ownershipInfoToOwnership(
+                repository.getDirectoryOwnership(), getLogger() );
+            if ( directoryOwnership != null )
             {
-                task.setDirectoryOwner( directoryOwner );
+                task.setDirectoryOwnership( directoryOwnership );
             }
 
-            final Owner fileOwner = TypeConversionUtils.ownerInfoToOwner( repository.getFileOwner(), getLogger() );
-            if ( fileOwner != null )
+            final Ownership fileOwnership = TypeConversionUtils.ownershipInfoToOwnership(
+                repository.getFileOwnership(), getLogger() );
+            if ( fileOwnership != null )
             {
-                task.setFileOwner( fileOwner );
+                task.setFileOwnership( fileOwnership );
             }
 
             task.setOutputDirectory( outputDirectory );

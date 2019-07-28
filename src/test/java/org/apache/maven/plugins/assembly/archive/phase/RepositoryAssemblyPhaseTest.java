@@ -38,7 +38,7 @@ import org.apache.maven.project.MavenProject;
 import org.codehaus.plexus.archiver.Archiver;
 import org.codehaus.plexus.archiver.ArchiverException;
 import org.codehaus.plexus.archiver.FileSet;
-import org.codehaus.plexus.archiver.Owner;
+import org.codehaus.plexus.archiver.Ownership;
 import org.codehaus.plexus.archiver.util.DefaultFileSet;
 import org.codehaus.plexus.interpolation.fixed.FixedStringSearchInterpolator;
 import org.codehaus.plexus.logging.Logger;
@@ -123,8 +123,8 @@ public class RepositoryAssemblyPhaseTest
         final File outDir = new File( tempRoot, "out" );
 
         macArchiver.expectModeChange( -1, -1, mode, mode, true );
-        // TODO: replace with expectOwnerChange
-        macArchiver.expectGetOwner( null, null );
+        // TODO: replace with expectOwnershipChange
+        macArchiver.expectGetOwnership( null, null );
         macArchiver.expectAddDirectory( outDir, "out/", null, null );
 
         macRepo.expectAssemble();
@@ -197,18 +197,18 @@ public class RepositoryAssemblyPhaseTest
             archiver.setFileMode( defaultFileMode );
         }
 
-        public void expectGetOwner( final Owner originalDirOwner, final Owner originalFileOwner )
+        public void expectGetOwnership( final Ownership originalDirOwnership, final Ownership originalFileOwnership )
         {
-            // TODO: fix validation of expected owner:
-            // compare not just references but properties of returned Owner instance, make verification null safe
-            expect( archiver.getOverrideDirectoryOwner() ).andReturn( originalDirOwner );
-            // TODO: fix validation of expected owner:
-            // compare not just references but properties of returned Owner instance, make verification null safe
-            expect( archiver.getOverrideFileOwner() ).andReturn( originalFileOwner );
+            // TODO: fix validation of expected ownership:
+            // compare not just references but properties of returned Ownership instance, make verification null safe
+            expect( archiver.getOverrideDirectoryOwnership() ).andReturn( originalDirOwnership );
+            // TODO: fix validation of expected ownership:
+            // compare not just references but properties of returned Ownership instance, make verification null safe
+            expect( archiver.getOverrideFileOwnership() ).andReturn( originalFileOwnership );
 
-            archiver.setFileOwner( org.easymock.EasyMock.<Owner> anyObject() );
+            archiver.setFileOwnership( org.easymock.EasyMock.<Ownership> anyObject() );
             org.easymock.EasyMock.expectLastCall().anyTimes();
-            archiver.setDirectoryOwner( org.easymock.EasyMock.<Owner> anyObject() );
+            archiver.setDirectoryOwnership( org.easymock.EasyMock.<Ownership> anyObject() );
             org.easymock.EasyMock.expectLastCall().anyTimes();
         }
 

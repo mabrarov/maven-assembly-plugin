@@ -1221,6 +1221,40 @@ public class AssemblyProxyArchiver
         delegate.setIgnorePermissions( ignorePermissions );
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public boolean isIgnoreOwner()
+    {
+        inPublicApi.set( Boolean.TRUE );
+        try
+        {
+            return delegate.isIgnoreOwner();
+        }
+        finally
+        {
+            inPublicApi.set( null );
+        }
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void setIgnoreOwner( final boolean ignoreOwner )
+    {
+        inPublicApi.set( Boolean.TRUE );
+        try
+        {
+            delegate.setIgnoreOwner( ignoreOwner );
+        }
+        finally
+        {
+            inPublicApi.set( null );
+        }
+    }
+
     private static final class DefaultFileInfo
         implements FileInfo
     {

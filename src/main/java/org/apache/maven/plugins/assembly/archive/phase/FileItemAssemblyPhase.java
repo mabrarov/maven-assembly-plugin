@@ -29,7 +29,7 @@ import org.apache.maven.plugins.assembly.utils.AssemblyFormatUtils;
 import org.apache.maven.plugins.assembly.utils.TypeConversionUtils;
 import org.codehaus.plexus.archiver.Archiver;
 import org.codehaus.plexus.archiver.ArchiverException;
-import org.codehaus.plexus.archiver.Owner;
+import org.codehaus.plexus.archiver.Ownership;
 import org.codehaus.plexus.component.annotations.Component;
 import org.codehaus.plexus.components.io.functions.InputStreamTransformer;
 import org.codehaus.plexus.components.io.resources.PlexusIoResource;
@@ -121,8 +121,9 @@ public class FileItemAssemblyPhase
                 final PlexusIoResource restoUse = createResource( source, fileSetTransformers );
 
                 int mode = TypeConversionUtils.modeToInt( fileItem.getFileMode(), getLogger() );
-                final Owner owner = TypeConversionUtils.ownerInfoToOwner( fileItem.getFileOwner(), getLogger() );
-                archiver.addResource( restoUse, target, mode, owner );
+                final Ownership ownership = TypeConversionUtils.ownershipInfoToOwnership( fileItem.getFileOwnership(),
+                    getLogger() );
+                archiver.addResource( restoUse, target, mode, ownership );
             }
             catch ( final ArchiverException | IOException e )
             {

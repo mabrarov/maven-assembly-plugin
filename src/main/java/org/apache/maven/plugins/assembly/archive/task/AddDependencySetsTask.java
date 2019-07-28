@@ -50,7 +50,7 @@ import org.apache.maven.shared.artifact.filter.resolve.ScopeFilter;
 import org.apache.maven.shared.artifact.filter.resolve.transform.ArtifactIncludeFilterTransformer;
 import org.codehaus.plexus.archiver.Archiver;
 import org.codehaus.plexus.archiver.ArchiverException;
-import org.codehaus.plexus.archiver.Owner;
+import org.codehaus.plexus.archiver.Ownership;
 import org.codehaus.plexus.components.io.functions.InputStreamTransformer;
 import org.codehaus.plexus.interpolation.fixed.FixedStringSearchInterpolator;
 import org.codehaus.plexus.logging.Logger;
@@ -252,16 +252,18 @@ public class AddDependencySetsTask
             task.setFileMode( fileMode );
         }
 
-        final Owner directoryOwner = TypeConversionUtils.ownerInfoToOwner( dependencySet.getDirectoryOwner(), logger );
-        if ( directoryOwner != null )
+        final Ownership directoryOwnership = TypeConversionUtils.ownershipInfoToOwnership(
+            dependencySet.getDirectoryOwnership(), logger );
+        if ( directoryOwnership != null )
         {
-            task.setDirectoryOwner( directoryOwner );
+            task.setDirectoryOwnership( directoryOwnership );
         }
 
-        final Owner fileOwner = TypeConversionUtils.ownerInfoToOwner( dependencySet.getFileOwner(), logger );
-        if ( fileOwner != null )
+        final Ownership fileOwnership = TypeConversionUtils.ownershipInfoToOwnership(
+            dependencySet.getFileOwnership(), logger );
+        if ( fileOwnership != null )
         {
-            task.setFileOwner( fileOwner );
+            task.setFileOwnership( fileOwnership );
         }
 
         task.setUnpack( dependencySet.isUnpack() );

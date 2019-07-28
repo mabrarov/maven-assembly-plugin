@@ -23,7 +23,7 @@ import org.apache.maven.plugins.assembly.archive.ArchiveCreationException;
 import org.apache.maven.plugins.assembly.utils.AssemblyFormatUtils;
 import org.codehaus.plexus.archiver.Archiver;
 import org.codehaus.plexus.archiver.ArchiverException;
-import org.codehaus.plexus.archiver.Owner;
+import org.codehaus.plexus.archiver.Ownership;
 import org.codehaus.plexus.archiver.util.DefaultFileSet;
 import org.codehaus.plexus.components.io.functions.InputStreamTransformer;
 
@@ -53,9 +53,9 @@ public class AddDirectoryTask
 
     private int fileMode = -1;
 
-    private Owner directoryOwner;
+    private Ownership directoryOwnership;
 
-    private Owner fileOwner;
+    private Ownership fileOwnership;
 
     public AddDirectoryTask( final File directory, InputStreamTransformer transformers )
     {
@@ -86,8 +86,8 @@ public class AddDirectoryTask
         final int oldDirMode = archiver.getOverrideDirectoryMode();
         final int oldFileMode = archiver.getOverrideFileMode();
 
-        final Owner oldDirOwner = archiver.getOverrideDirectoryOwner();
-        final Owner oldFileOwner = archiver.getOverrideFileOwner();
+        final Ownership oldDirOwnership = archiver.getOverrideDirectoryOwnership();
+        final Ownership oldFileOwnership = archiver.getOverrideFileOwnership();
 
         boolean fileModeSet = false;
         boolean dirModeSet = false;
@@ -109,15 +109,15 @@ public class AddDirectoryTask
                 fileModeSet = true;
             }
 
-            if ( directoryOwner != null )
+            if ( directoryOwnership != null )
             {
-                archiver.setDirectoryOwner( directoryOwner );
+                archiver.setDirectoryOwnership( directoryOwnership );
                 dirOwnerSet = true;
             }
 
-            if ( fileOwner != null )
+            if ( fileOwnership != null )
             {
-                archiver.setFileOwner( fileOwner );
+                archiver.setFileOwnership( fileOwnership );
                 fileOwnerSet = true;
             }
 
@@ -180,12 +180,12 @@ public class AddDirectoryTask
         {
             if ( fileOwnerSet )
             {
-                archiver.setFileOwner( oldFileOwner );
+                archiver.setFileOwnership( oldFileOwnership );
             }
 
             if ( dirOwnerSet )
             {
-                archiver.setDirectoryOwner( oldDirOwner );
+                archiver.setDirectoryOwnership( oldDirOwnership );
             }
 
             if ( dirModeSet )
@@ -236,14 +236,14 @@ public class AddDirectoryTask
         this.fileMode = fileMode;
     }
 
-    public void setDirectoryOwner( Owner directoryOwner )
+    public void setDirectoryOwnership( Ownership directoryOwnership )
     {
-        this.directoryOwner = directoryOwner;
+        this.directoryOwnership = directoryOwnership;
     }
 
-    public void setFileOwner( Owner fileOwner )
+    public void setFileOwnership( Ownership fileOwnership )
     {
-        this.fileOwner = fileOwner;
+        this.fileOwnership = fileOwnership;
     }
 
     public void setUseDefaultExcludes( final boolean useDefaultExcludes )

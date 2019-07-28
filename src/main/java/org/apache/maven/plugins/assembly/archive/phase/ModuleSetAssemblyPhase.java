@@ -45,7 +45,7 @@ import org.apache.maven.plugins.assembly.utils.TypeConversionUtils;
 import org.apache.maven.project.MavenProject;
 import org.apache.maven.project.ProjectBuilder;
 import org.codehaus.plexus.archiver.Archiver;
-import org.codehaus.plexus.archiver.Owner;
+import org.codehaus.plexus.archiver.Ownership;
 import org.codehaus.plexus.archiver.manager.ArchiverManager;
 import org.codehaus.plexus.component.annotations.Component;
 import org.codehaus.plexus.component.annotations.Requirement;
@@ -397,16 +397,18 @@ public class ModuleSetAssemblyPhase
             task.setFileMode( fileMode );
         }
 
-        final Owner directoryOwner = TypeConversionUtils.ownerInfoToOwner( binaries.getDirectoryOwner(), getLogger() );
-        if ( directoryOwner != null )
+        final Ownership directoryOwnership = TypeConversionUtils.ownershipInfoToOwnership(
+            binaries.getDirectoryOwnership(), getLogger() );
+        if ( directoryOwnership != null )
         {
-            task.setDirectoryOwner( directoryOwner );
+            task.setDirectoryOwnership( directoryOwnership );
         }
 
-        final Owner fileOwner = TypeConversionUtils.ownerInfoToOwner( binaries.getFileOwner(), getLogger() );
-        if ( fileOwner != null )
+        final Ownership fileOwnership = TypeConversionUtils.ownershipInfoToOwnership(
+            binaries.getFileOwnership(), getLogger() );
+        if ( fileOwnership != null )
         {
-            task.setFileOwner( fileOwner );
+            task.setFileOwnership( fileOwnership );
         }
 
         task.setUnpack( binaries.isUnpack() );

@@ -20,9 +20,9 @@ package org.apache.maven.plugins.assembly.utils;
  */
 
 import org.apache.maven.plugins.assembly.format.AssemblyFormattingException;
-import org.apache.maven.plugins.assembly.model.OwnerEntity;
-import org.apache.maven.plugins.assembly.model.OwnerInfo;
-import org.codehaus.plexus.archiver.Owner;
+import org.apache.maven.plugins.assembly.model.OwnershipEntity;
+import org.apache.maven.plugins.assembly.model.OwnershipInfo;
+import org.codehaus.plexus.archiver.Ownership;
 import org.codehaus.plexus.logging.Logger;
 
 import java.util.List;
@@ -90,31 +90,31 @@ public final class TypeConversionUtils
         }
     }
 
-    public static Owner ownerInfoToOwner( final OwnerInfo ownerInfo, final Logger logger )
+    public static Ownership ownershipInfoToOwnership( final OwnershipInfo ownershipInfo, final Logger logger )
         throws AssemblyFormattingException
     {
-        if ( ownerInfo == null )
+        if ( ownershipInfo == null )
         {
             return null;
         }
-        final OwnerEntity user = ownerInfo.getUser();
-        final OwnerEntity group = ownerInfo.getGroup();
+        final OwnershipEntity user = ownershipInfo.getUser();
+        final OwnershipEntity group = ownershipInfo.getGroup();
         if ( user == null && group == null )
         {
             return null;
         }
-        final Owner owner = new Owner();
+        final Ownership ownership = new Ownership();
         if ( user != null )
         {
-            owner.setUserName( user.getName() );
-            owner.setUserId( ownerIdToInteger( user.getId() ) );
+            ownership.setUserName( user.getName() );
+            ownership.setUserId( ownerIdToInteger( user.getId() ) );
         }
         if ( group != null )
         {
-            owner.setGroupName( group.getName() );
-            owner.setGroupId( ownerIdToInteger( group.getId() ) );
+            ownership.setGroupName( group.getName() );
+            ownership.setGroupId( ownerIdToInteger( group.getId() ) );
         }
-        return owner;
+        return ownership;
     }
 
     // the boolean return type is for people who want to make a decision based on the sanity

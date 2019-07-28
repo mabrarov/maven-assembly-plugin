@@ -364,14 +364,14 @@
           </description>
         </field>
         <field>
-          <name>fileOwner</name>
+          <name>fileOwnership</name>
           <version>2.1.0+</version>
           <association>
-            <type>OwnerInfo</type>
+            <type>OwnershipInfo</type>
           </association>
           <description>
             <![CDATA[
-            Sets the owner of the files included.
+            Sets the ownership of the files included.
             If not specified then is taken from filesystem.
             Support of this attribute depends on format:
             <ul>
@@ -388,14 +388,14 @@
           </description>
         </field>
         <field>
-          <name>directoryOwner</name>
+          <name>directoryOwnership</name>
           <version>2.1.0+</version>
           <association>
-            <type>OwnerInfo</type>
+            <type>OwnershipInfo</type>
           </association>
           <description>
             <![CDATA[
-            Sets the owner of the directories included.
+            Sets the ownership of the directories included.
             If not specified then is taken from filesystem.
             Support of this attribute depends on format:
             <ul>
@@ -510,14 +510,14 @@
           </description>
         </field>
         <field>
-          <name>fileOwner</name>
+          <name>fileOwnership</name>
           <version>2.1.0+</version>
           <association>
-            <type>OwnerInfo</type>
+            <type>OwnershipInfo</type>
           </association>
           <description>
             <![CDATA[
-            Sets the owner of the files included.
+            Sets the ownership of the files included.
             If not specified then is taken from filesystem.
             Support of this attribute depends on format:
             <ul>
@@ -658,14 +658,14 @@
           </description>
         </field>
         <field>
-          <name>fileOwner</name>
+          <name>fileOwnership</name>
           <version>2.1.0+</version>
           <association>
-            <type>OwnerInfo</type>
+            <type>OwnershipInfo</type>
           </association>
           <description>
             <![CDATA[
-            Sets the owner of the files included.
+            Sets the ownership of the files included.
             If not specified then is taken from filesystem.
             Support of this attribute depends on format:
             <ul>
@@ -682,14 +682,14 @@
           </description>
         </field>
         <field>
-          <name>directoryOwner</name>
+          <name>directoryOwnership</name>
           <version>2.1.0+</version>
           <association>
-            <type>OwnerInfo</type>
+            <type>OwnershipInfo</type>
           </association>
           <description>
             <![CDATA[
-            Sets the owner of the directories included.
+            Sets the ownership of the directories included.
             If not specified then is taken from filesystem.
             Support of this attribute depends on format:
             <ul>
@@ -1009,14 +1009,14 @@
           </description>
         </field>
         <field>
-          <name>fileOwner</name>
+          <name>fileOwnership</name>
           <version>2.1.0+</version>
           <association>
-            <type>OwnerInfo</type>
+            <type>OwnershipInfo</type>
           </association>
           <description>
             <![CDATA[
-            Sets the owner of the files included.
+            Sets the ownership of the files included.
             If not specified then is taken from filesystem.
             Support of this attribute depends on format:
             <ul>
@@ -1033,14 +1033,14 @@
           </description>
         </field>
         <field>
-          <name>directoryOwner</name>
+          <name>directoryOwnership</name>
           <version>2.1.0+</version>
           <association>
-            <type>OwnerInfo</type>
+            <type>OwnershipInfo</type>
           </association>
           <description>
             <![CDATA[
-            Sets the owner of the directories included.
+            Sets the ownership of the directories included.
             If not specified then is taken from filesystem.
             Support of this attribute depends on format:
             <ul>
@@ -1205,14 +1205,14 @@
           </description>
         </field>
         <field>
-          <name>fileOwner</name>
+          <name>fileOwnership</name>
           <version>2.1.0+</version>
           <association>
-            <type>OwnerInfo</type>
+            <type>OwnershipInfo</type>
           </association>
           <description>
             <![CDATA[
-            Sets the owner of the files included.
+            Sets the ownership of the files included.
             If not specified then is taken from filesystem.
             Support of this attribute depends on format:
             <ul>
@@ -1229,14 +1229,14 @@
           </description>
         </field>
         <field>
-          <name>directoryOwner</name>
+          <name>directoryOwnership</name>
           <version>2.1.0+</version>
           <association>
-            <type>OwnerInfo</type>
+            <type>OwnershipInfo</type>
           </association>
           <description>
             <![CDATA[
-            Sets the owner of the directories included.
+            Sets the ownership of the directories included.
             If not specified then is taken from filesystem.
             Support of this attribute depends on format:
             <ul>
@@ -1431,14 +1431,14 @@
           </description>
         </field>
         <field>
-          <name>fileOwner</name>
+          <name>fileOwnership</name>
           <version>2.1.0+</version>
           <association>
-            <type>OwnerInfo</type>
+            <type>OwnershipInfo</type>
           </association>
           <description>
             <![CDATA[
-            Sets the owner of the files included.
+            Sets the ownership of the files included.
             If not specified then is taken from filesystem.
             Support of this attribute depends on format:
             <ul>
@@ -1455,14 +1455,14 @@
           </description>
         </field>
         <field>
-          <name>directoryOwner</name>
+          <name>directoryOwnership</name>
           <version>2.1.0+</version>
           <association>
-            <type>OwnerInfo</type>
+            <type>OwnershipInfo</type>
           </association>
           <description>
             <![CDATA[
-            Sets the owner of the directories included.
+            Sets the ownership of the directories included.
             If not specified then is taken from filesystem.
             Support of this attribute depends on format:
             <ul>
@@ -1675,7 +1675,7 @@
       </fields>
     </class>
     <class>
-      <name>OwnerEntity</name>
+      <name>OwnershipEntity</name>
       <version>2.1.0+</version>
       <description>
         Describes UNIX user or group owning file or directory.
@@ -1720,7 +1720,7 @@
       </fields>
     </class>
     <class>
-      <name>OwnerInfo</name>
+      <name>OwnershipInfo</name>
       <version>2.1.0+</version>
       <description>
         Describes ownership of file or directory.
@@ -1744,7 +1744,7 @@
             ]]>
           </description>
           <association>
-            <type>OwnerEntity</type>
+            <type>OwnershipEntity</type>
           </association>
           <required>false</required>
         </field>
@@ -1767,7 +1767,7 @@
             ]]>
           </description>
           <association>
-            <type>OwnerEntity</type>
+            <type>OwnershipEntity</type>
           </association>
           <required>false</required>
         </field>

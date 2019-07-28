@@ -103,7 +103,7 @@ public class AddDependencySetsTaskTest
 
 //        macTask.expectGetSession( null );
         macTask.expectGetMode( 0222, 0222 );
-        macTask.expectGetOwner( null, null );
+        macTask.expectGetOwnership( null, null );
 
         DefaultAssemblyArchiverTest.setupInterpolators( macTask.configSource );
 
@@ -176,7 +176,7 @@ public class AddDependencySetsTaskTest
         macTask.expectAddFile( file, "out/" + aid + "-" + version + "." + type );
 
         macTask.expectGetMode( 0222, 0222 );
-        macTask.expectGetOwner( null, null );
+        macTask.expectGetOwnership( null, null );
 
         final DependencySet ds = new DependencySet();
         ds.setOutputDirectory( "/out" );
@@ -248,7 +248,7 @@ public class AddDependencySetsTaskTest
 
         macTask.expectBuildFromRepository( depProject );
         macTask.expectGetMode( 0222, 0222 );
-        macTask.expectGetOwner( null, null );
+        macTask.expectGetOwnership( null, null );
 
         final Logger logger = new ConsoleLogger( Logger.LEVEL_DEBUG, "test" );
 

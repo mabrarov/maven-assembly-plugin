@@ -285,7 +285,7 @@ public class ModuleSetAssemblyPhaseTest
         macTask.expectGetFinalName( "final-name" );
         macTask.expectGetDestFile( new File( "junk" ) );
         macTask.expectGetMode( 0777, 0777 );
-        macTask.expectGetOwner( null, null );
+        macTask.expectGetOwnership( null, null );
 
         final int mode = TypeConversionUtils.modeToInt( "777", new ConsoleLogger( Logger.LEVEL_DEBUG, "test" ) );
 
@@ -375,7 +375,7 @@ public class ModuleSetAssemblyPhaseTest
         macTask.expectGetFinalName( "final-name" );
         macTask.expectGetDestFile( new File( "junk" ) );
         macTask.expectGetMode( 0222, 0222 );
-        macTask.expectGetOwner( null, null );
+        macTask.expectGetOwnership( null, null );
         macTask.expectAddFile( artifactFile, "out/artifact", TypeConversionUtils.modeToInt( "777", new ConsoleLogger(
             Logger.LEVEL_DEBUG, "test" ) ) );
 
@@ -465,7 +465,7 @@ public class ModuleSetAssemblyPhaseTest
         macTask.expectAddFile( artifactFile, "out/artifact", TypeConversionUtils.modeToInt( "777", new ConsoleLogger(
             Logger.LEVEL_DEBUG, "test" ) ) );
         macTask.expectGetMode( 0222, 0222 );
-        macTask.expectGetOwner( null, null );
+        macTask.expectGetOwnership( null, null );
 
         final ModuleBinaries binaries = new ModuleBinaries();
 
@@ -536,7 +536,7 @@ public class ModuleSetAssemblyPhaseTest
         macTask.expectGetFinalName( "final-name" );
         macTask.expectGetDestFile( new File( "junk" ) );
         macTask.expectGetMode( 0222, 0222 );
-        macTask.expectGetOwner( null, null );
+        macTask.expectGetOwnership( null, null );
 
         macTask.expectAddFile( artifactFile, "out/artifact", TypeConversionUtils.modeToInt( "777", new ConsoleLogger(
             Logger.LEVEL_DEBUG, "test" ) ) );

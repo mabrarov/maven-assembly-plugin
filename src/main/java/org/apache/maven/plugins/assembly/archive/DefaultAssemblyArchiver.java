@@ -347,6 +347,10 @@ public class DefaultAssemblyArchiver implements AssemblyArchiver {
         if (StringUtils.isNotBlank(configSource.getOverrideGroupName())) {
             archiver.setOverrideGroupName(StringUtils.trim(configSource.getOverrideGroupName()));
         }
+        final Integer overrideUmask = configSource.getOverrideUmask();
+        if (overrideUmask != null) {
+            archiver.setUmask(overrideUmask);
+        }
 
         return archiver;
     }
